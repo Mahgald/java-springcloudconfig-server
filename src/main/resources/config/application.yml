@@ -1,3 +1,10 @@
+# Configure this Discovery Server
+eureka:
+  instance:
+    hostname: herokuapp
+  client:  # Not a client, don't register with yourself
+    registerWithEureka: false
+    fetchRegistry: false
 server:
   port: 8888
 spring:
