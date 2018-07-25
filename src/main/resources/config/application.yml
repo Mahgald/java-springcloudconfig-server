@@ -1,6 +1,6 @@
-server:
-  port: 8888
 spring:
+  application:
+    name: "@project.artifactId@"
   cloud:
     config:
       server:
@@ -8,13 +8,16 @@ spring:
           uri:  https://github.com/Mahgald/java-configserver-repository.git
           search-paths:
           - 'java-ms*'
-          
-# Configure this Discovery Server
+info:
+  name: "@project.artifactId@"
+  version: "@project.version@"
+  description: "@project.description@"
+  running-profile: ${spring.profiles.active}
+  
+server:
+  port: 8888
+  
 eureka:
-  instance:
-    hostname: java-springcloudconfig-server
-  client:  # Not a client, don't register with yourself
-    registerWithEureka: false
-    fetchRegistry: false
-    service-url:
-      defaultZone: http://localhost:8888/eureka
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9000/eureka/
